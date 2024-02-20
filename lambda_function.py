@@ -60,14 +60,17 @@ def objectToDict(obj):
         data_dict[key] = value
     return data_dict
 
-def getObjectFromBucket(bucket):
+def getObjectFromBucket(bucket_name,event):
     """
     input: bucket de la S3
     Descripción: Obtiene el primer objeto del bucket (Supone que solo hay un objeto en el bucket)
     return: Objecto de la S3
     """
-    for obj in bucket.objects.all():
-        return obj
+
+    query_result_object_key = event["Records"][0]['s3']['object']['key']
+    
+    s3 = boto3.client('s3')
+    obj = s3.get_object(Bucket=bucket_name, Key=query_result_object_key)
     return obj 
 
 def lambdaMain(bucket_name,dynamodb_table):
@@ -77,15 +80,13 @@ def lambdaMain(bucket_name,dynamodb_table):
     return: Mensaje de éxito o error
     """
 
+    ###Esto se puede ajustar mediante variables de ambiente
     session = boto3.Session(
         aws_access_key_id=secret['access-key'],
         aws_secret_access_key=secret['secret-access-key'],
     )
-    s3 = session.resource('s3')
-
-    bucket = s3.Bucket(bucket_name)
-
-    obj = getObjectFromBucket(bucket)
+    
+    obj = getObjectFromBucket(bucket_name,dynamodb_table)
     data_dict = objectToDict(obj)
 
     hashFromDict = hashString(data_dict)
