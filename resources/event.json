@@ -1,0 +1,39 @@
+{
+    "Records": [
+        {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "us-east-1",
+            "eventTime": "2023-01-27T17:16:49.933Z",
+            "eventName": "ObjectCreated:Put",
+            "userIdentity": {
+                "principalId": "AWS:AROAQJVMLQTA7JX3NY2PY:barenas@bancolombia.com.co"
+            },
+            "requestParameters": {
+                "sourceIPAddress": "184.72.85.96"
+            },
+            "responseElements": {
+                "x-amz-request-id": "QP72CEMQAXF3PVGM",
+                "x-amz-id-2": "Zh19TclnVvNBNTaAv8O79srE6PhQq0w2DEQwJ99VN1ObkgHN//MaIgv8xRp+scFZUinb3IraLeap0+JkddrJ+s6wrY7txVom+Qm8jQ9SU/w="
+            },
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "dfcbde19-80fa-463c-9867-755ed3400119",
+                "bucket": {
+                    "name": "aw1170001-pyme-bancolombia-dev-bucket-glue-couchdb",
+                    "ownerIdentity": {
+                        "principalId": "AUHZPOAMUB42M"
+                    },
+                    "arn": "arn:aws:s3:::aw1170001-pyme-bancolombia-dev-bucket-glue-couchdb"
+                },
+                "object": {
+                    "key": "query-result/faaaa379-723c-4b42-b787-37e007a54d86.csv",
+                    "size": 17,
+                    "eTag": "a78f2173c7c8e823889b7ebe4d6c6d2b",
+                    "versionId": "R2L2YhSduCROKX084b1ABimKHnw4y2xr",
+                    "sequencer": "0063D40701C8362452"
+                }
+            }
+        }
+    ]
+}
