@@ -104,6 +104,8 @@ def lambdaMain(bucket_name,dynamodb_table):
             return "Objeto eliminado correctamente"
         except Exception as error: 
             print("Error eliminando el objeto", error) 
+    else:
+        return "Error: El hash no coincide"
 
 def lambda_handler(event, context):
     """
